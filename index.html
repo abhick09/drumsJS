@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="keys">
+        <div data-key="65" class="key">
+            <kbd>A</kbd>
+            <span class="sound">Electricguitar</span>
+        </div>
+        <div data-key="83" class="key">
+            <kbd>S</kbd>
+            <span class="sound">Basic_Rock</span>
+        </div>
+        <div data-key="68" class="key">
+            <kbd>D</kbd>
+            <span class="sound">Boom_Chuk</span>
+        </div>
+        </div>
+    </body>
+
+    <audio data-key="65" src="sounds/electricguitar.wav"></audio>
+    <audio data-key="83" src="sounds/Basic_Rock_135.wav"></audio>
+    <audio data-key="68" src="sounds/Boom_Chuk_130.wav"></audio>
+    <script>
+        function playSound (e) {
+            //console.log(e.keyCode)
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+            //console.log(audio)
+            if(!audio) return;//stops the function
+            audio.currentTime = 0;
+            audio.play();
+            key.classList.add('playing')
+            //console.log(key)
+        }
+        function removeTransition(e) {
+            if(e.propertyName !== 'transform') return;
+            console.log(e.propertyName);
+            this.classList.remove('playing')
+            console.log('working')
+        }
+        const keys = document.querySelectorAll('.key');
+        keys.forEach(key=> key.addEventListener('transitionend',removeTransition));
+        window.addEventListener('keydown', playSound)
+    </script>
+</html>
