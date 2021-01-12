@@ -16,12 +16,33 @@
             <kbd>D</kbd>
             <span class="sound">Boom_Chuk</span>
         </div>
+        <div data-key="70" class="key">
+            <kbd>F</kbd>
+            <span class="sound">Ywwowoo</span>
+        </div>
+        <div data-key="71" class="key">
+            <kbd>G</kbd>
+            <span class="sound">Airland</span>
+        </div>
+        <div data-key="72" class="key">
+            <kbd>H</kbd>
+            <span class="sound">Witch</span>
+        </div>
+        <div data-key="74" class="key">
+            <kbd>J</kbd>
+            <span class="sound">Attack</span>
+        </div>
         </div>
     </body>
 
     <audio data-key="65" src="sounds/electricguitar.wav"></audio>
     <audio data-key="83" src="sounds/Basic_Rock_135.wav"></audio>
     <audio data-key="68" src="sounds/Boom_Chuk_130.wav"></audio>
+    <audio data-key="70" src="sounds/ywwowoo.wav"></audio>
+    <audio data-key="71" src="sounds/airland.wav"></audio>
+    <audio data-key="72" src="sounds/witch.wav"></audio>
+    <audio data-key="74" src="sounds/attack.wav"></audio>
+
     <script>
         function playSound (e) {
             //console.log(e.keyCode)
@@ -36,9 +57,9 @@
         }
         function removeTransition(e) {
             if(e.propertyName !== 'transform') return;
-            console.log(e.propertyName);
+            //console.log(e.propertyName);
             this.classList.remove('playing')
-            console.log('working')
+            //console.log('working')
         }
         const keys = document.querySelectorAll('.key');
         keys.forEach(key=> key.addEventListener('transitionend',removeTransition));
